@@ -1,21 +1,27 @@
 # esp32-custom-memory-allocator
 
-#About the project 
-Experimental free-list based memory allocator for ESP32,
-demonstrating heap reuse and manual memory management.
+## About the Project
+An experimental free-list based memory allocator for ESP32,
+demonstrating heap reuse and manual memory management on top of the
+ESP32 safe heap.
 
-#Need of building it
-I built it to get the deepest information about the memory and how it is managed and the threats to memory and how to make it safe and bit more information about malloc and free.
+## Why I Built This
+I built this project to deeply understand how memory is managed at a
+low level, how `malloc` and `free` work internally, and what kinds of
+mistakes and risks are involved in manual memory management.
 
-#What I learned
-• How memory is managed 
-• How malloc and free works
-• Freelist management 
-• Pointer unlinking 
-• Heap reuse and Fresh allocation 
-• How allocators are extremely useful and powerful 
+## What I Learned
+- How memory is managed internally
+- How `malloc` and `free` work
+- Free-list based allocation
+- Pointer unlinking in linked lists
+- Heap reuse vs fresh allocation
+- Why memory allocators are powerful but dangerous
 
-#Conclusion
-Malloc is extremely powerful as well as dangerous the easiest way to get deepest information about allocators is to create your own which I done in my project.It is a simple learning project but extremely educational.
+## Conclusion
+Dynamic memory allocation is extremely powerful, but also risky if not
+handled carefully. One of the best ways to truly understand memory
+allocators is to build a simple one yourself. This project is a learning
+experiment, not a production allocator, but it was highly educational.
 
-#Thanks
+## Thanks
