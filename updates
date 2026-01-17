@@ -1,17 +1,18 @@
-**Updates
+#Updates
 
 Header-Based Size Tracking
-This update introduces a header-based memory tracking system to improve the safety and correctness of the allocator. Instead of depending on the user to manually pass the size during "free", the allocator now stores metadata directly in memory.
+This update introduces a header-based memory tracking system to improve the safety and correctness of the allocator. Instead of depending on the user to manually pass the size during `free`, the allocator now stores metadata directly in memory.
 
 A small header structure is placed immediately before the user-accessible memory block. This header stores the size of the allocation, allowing the allocator to remember how much memory was originally reserved.
 When memory is allocated, the allocator returns a pointer after the header, so the user never interacts with or sees the metadata. The header remains completely internal.
 
-When "free" is called, the allocator moves backward from the user pointer to reach the header. From this header, it retrieves the exact size of the allocation, even when multiple allocations exist simultaneously.
+When `free` is called, the allocator moves backward from the user pointer to reach the header. From this header, it retrieves the exact size of the allocation, even when multiple allocations exist simultaneously.
 Each allocation has its own independent header, even though all headers share the same structure type. This allows the allocator to correctly track multiple pointers without confusion.
 
 This approach mirrors how real-world allocators work internally and eliminates size-mismatch bugs during deallocation.
 
-**Key Concepts Used
+##Key Concepts Used
+
 In-band metadata storage
 Hidden memory headers
 Pointer arithmetic
