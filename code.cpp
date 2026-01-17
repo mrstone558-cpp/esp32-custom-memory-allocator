@@ -67,5 +67,5 @@ while (!serialbt.hasClient()) {
     Friend_Free(b, sizeof(int));
     }
 void loop(){
-
+//
     }
